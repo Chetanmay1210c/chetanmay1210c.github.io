@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chetan | Freelance Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for a sleek, tech-focused aesthetic */
+        :root {
+            --bg-color: #0a192f;
+            --surface-color: #112240;
+            --text-main: #e6f1ff;
+            --text-muted: #8892b0;
+            --accent: #64ffda;
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Reusable Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            background: #4cd6b8;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(100, 255, 218, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 100px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        /* Social Proof Section */
+        #testimonials {
+            padding: 100px 0;
+            background: rgba(17, 34, 64, 0.5);
+        }
+
+        .testimonial-card {
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .client-name {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-family: monospace;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            #projects, #testimonials, #contact { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Available for New Projects & Clients
+            </div>
+            <p class="hero-subtitle">Hi, my name is</p>
+            <h1 class="hero-title">Chetan.</h1>
+            <h2 class="hero-title" style="color: var(--text-muted);">I build robust digital experiences.</h2>
+            <p class="hero-desc">
+                I am a freelance Full-Stack Web Developer specializing in Next.js, React, and Node.js. I architect scalable applications with a strong intuition for clean, minimalist design and high-performance functionality.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://chetanjs.vercel.app" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    Visit Main Portfolio
+                </a>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Selected Works</h2>
+            <div class="grid">
+                <!-- Project 1 -->
+                <div class="card">
+                    <h3>LifePilot_AI</h3>
+                    <p>A comprehensive SaaS platform integrating intelligent automation. Engineered with a focus on seamless database connections and high-availability serverless architecture.</p>
+                    <div class="tech-stack">
+                        <span>Next.js</span>
+                        <span>React</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="card">
+                    <h3>Visual Weather Hub</h3>
+                    <p>A fast, responsive weather forecasting application fetching real-time data via the Visual Crossing API. Optimized for rapid build times and accurate geospatial data parsing.</p>
+                    <div class="tech-stack">
+                        <span>Next.js</span>
+                        <span>Tailwind CSS</span>
+                        <span>REST APIs</span>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="card">
+                    <h3>Custom Task Manager</h3>
+                    <p>A minimalist productivity dashboard featuring custom UI layouts and efficient state management for tracking daily workflows and long-term project planning.</p>
+                    <div class="tech-stack">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Why Work With Me?</h2>
+            <div class="grid">
+                <div class="testimonial-card">
+                    <p class="quote">"Chetan has a strong intuition for what makes a web application both beautiful and highly functional. His expertise in modern JavaScript frameworks makes him an invaluable asset for building scalable SaaS products."</p>
+                    <p class="client-name">— Tech Startup Founder</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"Finding a developer who understands both frontend aesthetics and deep backend architecture is rare. Highly communicative and consistently delivers clean, bug-free code."</p>
+                    <p class="client-name">— Freelance Client</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Build Something Great</h2>
+            <p class="contact-text">
+                Whether you have a question, an idea for a SaaS platform, or a freelance project you need help getting off the ground, my inbox is always open. Let's discuss how my full-stack skills can bring your vision to life.
+            </p>
+            <a href="mailto:hello@example.com" class="btn" id="emailBtn">Say Hello</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Designed & Built by Chetan | <a href="https://chetanjs.vercel.app" style="color: var(--accent); text-decoration: none;">chetanjs.vercel.app</a></p>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add a slight delay to the pulse animation on load for visual effect
+        document.addEventListener("DOMContentLoaded", () => {
+            const badge = document.querySelector('.status-badge');
+            badge.style.opacity = '0';
+            setTimeout(() => {
+                badge.style.transition = 'opacity 1s ease-in-out';
+                badge.style.opacity = '1';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
